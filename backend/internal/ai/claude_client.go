@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"time"
 )
 
 type ClaudeClient struct {
@@ -23,7 +24,7 @@ func NewClaudeClient() *ClaudeClient {
 func (c *ClaudeClient) Generate(prompt string) (string, error) {
 
 	body := map[string]interface{}{
-		"model": c.Model,
+		"model":      c.Model,
 		"max_tokens": 1000,
 		"messages": []map[string]string{
 			{
@@ -52,9 +53,11 @@ func (c *ClaudeClient) Generate(prompt string) (string, error) {
 	req.Header.Set("anthropic-version", "2023-06-01")
 	req.Header.Set("content-type", "application/json")
 
-	client := &http.Client{}
-	resp, err := client.Do(req)
+	client := &http.Client{
+		Timeout: 20 * time.Second,
+	}
 
+	resp, err := client.Do(req)
 	if err != nil {
 		return "", err
 	}

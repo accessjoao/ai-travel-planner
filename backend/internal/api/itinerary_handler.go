@@ -98,8 +98,8 @@ func (h *ItineraryHandler) Generate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	response := struct {
-		City string                   `json:"city"`
-		Days []models.DayPlan         `json:"days"`
+		City string           `json:"city"`
+		Days []models.DayPlan `json:"days"`
 	}{
 		City: req.City,
 		Days: itinerary.Days,

@@ -37,13 +37,7 @@ func main() {
 	})
 
 	// Itinerary endpoint (POST only)
-	mux.HandleFunc("/api/itinerary", func(w http.ResponseWriter, r *http.Request) {
-		if r.Method != http.MethodPost {
-			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-			return
-		}
-		handler.Generate(w, r)
-	})
+	mux.HandleFunc("/api/itinerary", handler.Generate)
 
 	port := os.Getenv("PORT")
 	if port == "" {
