@@ -12,10 +12,12 @@ import (
 
 func main() {
 
-	// Load .env file (useful locally; Render uses dashboard env vars)
-	err := godotenv.Load()
-	if err != nil {
-		log.Println("Warning: .env file not found or failed to load")
+	// Load .env only in non-production environments
+	if os.Getenv("GO_ENV") != "production" {
+		err := godotenv.Load()
+		if err != nil {
+			log.Println("Warning: .env file not found or failed to load")
+		}
 	}
 
 	mux := http.NewServeMux()
@@ -50,7 +52,7 @@ func main() {
 
 	log.Println("Server running on port:", port)
 
-	err = http.ListenAndServe(":"+port, mux)
+	err := http.ListenAndServe(":"+port, mux)
 	if err != nil {
 		log.Fatal(err)
 	}
