@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/joho/godotenv"
 
@@ -11,7 +12,7 @@ import (
 
 func main() {
 
-	// Load .env file
+	// Load .env file (useful locally; Render uses dashboard env vars)
 	err := godotenv.Load()
 	if err != nil {
 		log.Println("Warning: .env file not found or failed to load")
@@ -23,9 +24,14 @@ func main() {
 
 	mux.HandleFunc("/api/itinerary", handler.Generate)
 
-	log.Println("Server running on :8080")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
 
-	err = http.ListenAndServe(":8080", mux)
+	log.Println("Server running on port:", port)
+
+	err = http.ListenAndServe(":"+port, mux)
 	if err != nil {
 		log.Fatal(err)
 	}
