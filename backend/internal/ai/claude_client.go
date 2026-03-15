@@ -23,7 +23,7 @@ func NewClaudeClient() *ClaudeClient {
 func (c *ClaudeClient) Generate(prompt string) (string, error) {
 
 	body := map[string]interface{}{
-		"model": c.Model, // ← model now comes from .env
+		"model": c.Model,
 		"max_tokens": 1000,
 		"messages": []map[string]string{
 			{
