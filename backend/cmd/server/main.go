@@ -22,7 +22,26 @@ func main() {
 
 	handler := api.NewItineraryHandler()
 
-	mux.HandleFunc("/api/itinerary", handler.Generate)
+	// Root route
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain")
+		w.Write([]byte("AI Travel Planner API is running"))
+	})
+
+	// Health check route
+	mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain")
+		w.Write([]byte("ok"))
+	})
+
+	// Itinerary endpoint (POST only)
+	mux.HandleFunc("/api/itinerary", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodPost {
+			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+			return
+		}
+		handler.Generate(w, r)
+	})
 
 	port := os.Getenv("PORT")
 	if port == "" {
