@@ -9,12 +9,15 @@ import type { Itinerary, GenerateItineraryInput } from "../types/travel";
 export default function Home() {
   const [itinerary, setItinerary] = useState<Itinerary | null>(null);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   async function generateItinerary(input: GenerateItineraryInput) {
     const { city, days, budget, interests } = input;
 
+    setErrorMessage(null);
+
     if (!city || !days) {
-      alert("Please enter at least a city and number of days.");
+      setErrorMessage("Please enter at least a city and number of days.");
       return;
     }
 
@@ -39,11 +42,15 @@ export default function Home() {
         }
       );
 
+      if (!res.ok) {
+        throw new Error("Bad response from server");
+      }
+
       const data: Itinerary = await res.json();
       setItinerary(data);
     } catch (err) {
       console.error(err);
-      alert("Failed to generate itinerary");
+      setErrorMessage("Failed to generate itinerary. Try again soon.");
     }
 
     setLoading(false);
@@ -54,7 +61,11 @@ export default function Home() {
       <div className="w-full max-w-7xl space-y-6">
         <Header />
         <TravelForm onGenerate={generateItinerary} loading={loading} />
-        <ItineraryResults itinerary={itinerary} loading={loading} />
+        <ItineraryResults
+          itinerary={itinerary}
+          loading={loading}
+          errorMessage={errorMessage}
+        />
       </div>
     </main>
   );

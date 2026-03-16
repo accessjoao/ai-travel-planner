@@ -5,7 +5,11 @@ import { DayCard } from "./DayCard";
 import { LoadingSpinner } from "./LoadingSpinner";
 import type { ItineraryResultsProps } from "../types/travel";
 
-export function ItineraryResults({ itinerary, loading }: ItineraryResultsProps) {
+type Props = ItineraryResultsProps & {
+  errorMessage?: string | null;
+};
+
+export function ItineraryResults({ itinerary, loading, errorMessage }: Props) {
   const containerVariants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.6 } }
@@ -16,16 +20,14 @@ export function ItineraryResults({ itinerary, loading }: ItineraryResultsProps) 
     visible: { opacity: 1, y: 0 }
   };
 
-  // Show spinner while loading
-  if (loading) {
+  if (loading || errorMessage) {
     return (
       <div className="mt-10">
-        <LoadingSpinner />
+        <LoadingSpinner errorMessage={errorMessage} />
       </div>
     );
   }
 
-  // Nothing yet
   if (!itinerary) {
     return null;
   }

@@ -8,7 +8,7 @@ const messages = [
   "Checking the best food spots..."
 ];
 
-export function LoadingSpinner() {
+export function LoadingSpinner({ errorMessage }: { errorMessage?: string | null }) {
   const [index, setIndex] = useState(0);
   const [stage, setStage] = useState<"normal" | "warming" | "timeout">("normal");
 
@@ -20,7 +20,6 @@ export function LoadingSpinner() {
     return () => clearInterval(interval);
   }, []);
 
-  // Multi-stage timeout logic
   useEffect(() => {
     const warmingTimer = setTimeout(() => {
       setStage("warming");
@@ -36,6 +35,16 @@ export function LoadingSpinner() {
     };
   }, []);
 
+  if (errorMessage) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20 space-y-4">
+        <p className="text-red-400 font-mono text-center text-lg">
+          {errorMessage}
+        </p>
+      </div>
+    );
+  }
+
   if (stage === "timeout") {
     return (
       <div className="flex flex-col items-center justify-center py-20 space-y-4">
@@ -43,7 +52,7 @@ export function LoadingSpinner() {
           This is taking longer than usual.
         </p>
         <p className="text-white/60 font-mono text-center text-sm max-w-md">
-          The server might be busy or waking up. Try again in a moment.
+          The server might be busy or waking up. You should get your results soon.
         </p>
       </div>
     );
@@ -64,10 +73,7 @@ export function LoadingSpinner() {
 
   return (
     <div className="flex flex-col items-center justify-center py-20 space-y-4">
-      {/* Spinner */}
       <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
-
-      {/* Rotating message */}
       <p className="text-white/70 font-mono text-center text-sm">
         {messages[index]}
       </p>

@@ -15,7 +15,7 @@ export function TravelForm({ onGenerate, loading }: TravelFormProps) {
   const [interests, setInterests] = useState("");
 
   function handleSubmit(e?: React.FormEvent) {
-    if (e) e.preventDefault(); // prevents page reload
+    if (e) e.preventDefault();
     onGenerate({ city, days, budget, interests });
     setCity("");
     setDays("");
@@ -26,19 +26,19 @@ export function TravelForm({ onGenerate, loading }: TravelFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       {/* City */}
-      <div className="w-full md:ml-6">
+      <div className="w-full lg:ml-5">
         <input
           placeholder="City"
-          className="px-4 py-3 w-full max-w-4xl bg-black/60 backdrop-blur border border-white/20 rounded-lg font-mono focus:border-white/40 outline-none transition"
+          className="px-4 py-3 w-full max-w-2xl bg-black/60 backdrop-blur border border-white/20 rounded-lg font-mono focus:border-white/40 outline-none transition"
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
       </div>
 
       {/* Days + Budget row */}
-      <div className="flex flex-col md:flex-row md:gap-4 w-full md:ml-12 justify-start">
+      <div className="flex flex-col lg:flex-row md:gap-4 w-full lg:ml-10 justify-start">
         {/* Days Dropdown */}
-        <div className="flex-1 mb-4 md:mb-0 max-w-md">
+        <div className="flex-1 mb-4 md:mb-0 max-w-sm">
           <label className="block text-white/60 font-mono text-sm mb-1">
             Number of Days
           </label>
@@ -50,7 +50,7 @@ export function TravelForm({ onGenerate, loading }: TravelFormProps) {
                 setDays(e.target.value ? parseInt(e.target.value, 10) : "")
               }
             >
-              <option value="" className="text-white/60">Select days</option>
+              <option value="" className="text-white/30"></option>
               {Array.from({ length: 7 }, (_, i) => i + 1).map((d) => (
                 <option key={d} value={d} className="text-white">
                   {d} {d === 1 ? "day" : "days"}
@@ -64,9 +64,9 @@ export function TravelForm({ onGenerate, loading }: TravelFormProps) {
         </div>
 
         {/* Budget Dropdown */}
-        <div className="flex-1 max-w-md">
+        <div className="flex-1 max-w-sm">
           <label className="block text-white/60 font-mono text-sm mb-1">
-            Budget
+            Budget (USD)
           </label>
           <div className="relative">
             <select
@@ -76,7 +76,7 @@ export function TravelForm({ onGenerate, loading }: TravelFormProps) {
                 setBudget(e.target.value ? parseInt(e.target.value, 10) : "")
               }
             >
-              <option value="" className="text-white/60">Select budget</option>
+              <option value="" className="text-white/60"></option>
               <option value={200} className="text-white">$50–$200</option>
               <option value={500} className="text-white">$201–$500</option>
               <option value={700} className="text-white">$501–$1000</option>
@@ -92,9 +92,9 @@ export function TravelForm({ onGenerate, loading }: TravelFormProps) {
       </div>
 
       {/* Interests */}
-      <div className="w-full md:ml-24">
+      <div className="w-full mt-10 lg:ml-15">
         <input
-          placeholder="Interests (food, culture, nightlife)"
+          placeholder="Interests (food, culture, nightlife, nature...)"
           className="px-4 py-3 w-full max-w-4xl bg-black/60 backdrop-blur border border-white/20 rounded-lg font-mono focus:border-white/40 outline-none transition"
           value={interests}
           onChange={(e) => setInterests(e.target.value)}
@@ -102,7 +102,7 @@ export function TravelForm({ onGenerate, loading }: TravelFormProps) {
       </div>
 
       {/* Button */}
-      <div className="w-full max-w-4xl md:ml-30">
+      <div className="w-full mt-10 max-w-5xl lg:ml-30">
         <button
           type="submit"
           disabled={loading}
