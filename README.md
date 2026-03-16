@@ -10,6 +10,8 @@ The AI Travel Planner helps users plan their dream trips by generating customize
 
 https://access-ai-travel-planner.vercel.app/
 
+<img width="1324" height="661" alt="access-ai-travel-planner" src="https://github.com/user-attachments/assets/e51f9aea-0a27-4161-b046-66f22aa1ee8b" />
+
 ## 🏗️ Architecture
 
 This project follows a microservices-inspired architecture with separate frontend and backend components:
