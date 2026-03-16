@@ -1,4 +1,4 @@
-# AI Travel Planner
+# Access AI Travel Planner
 
 A full-stack web application that leverages AI to create personalized travel itineraries. Built with a modern tech stack featuring a Go backend and Next.js frontend, this project demonstrates expertise in AI integration, full-stack development, and responsive web design.
 
