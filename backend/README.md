@@ -73,7 +73,15 @@ backend/
 
 - `POST /api/itinerary` - Generate a new travel itinerary
 
-## 🚀 Deployment
+## Test
+
+### Local Testing
+
+Run the following command in the `backend` folder to execute tests:
+
+```bash
+go test ./...
+```
 
 ### Cloud Deployment
 
