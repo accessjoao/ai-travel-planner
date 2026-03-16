@@ -90,9 +90,6 @@ ai-travel-planner/
 
 This is a portfolio project. While it's not actively maintained for contributions, feel free to fork and adapt it for your own learning or projects!
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ## 👨‍💻 Author
 

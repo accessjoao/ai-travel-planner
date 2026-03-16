@@ -80,10 +80,6 @@ frontend/
 
 This is a portfolio project. Feel free to fork and modify for your own use!
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
 ---
 
 Built with ❤️ using Next.js and TypeScript

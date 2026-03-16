@@ -5,6 +5,7 @@ import { Header } from "../components/Header";
 import { TravelForm } from "../components/TravelForm";
 import { ItineraryResults } from "../components/ItineraryResults";
 import type { Itinerary, GenerateItineraryInput } from "../types/travel";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   const [itinerary, setItinerary] = useState<Itinerary | null>(null);
@@ -57,16 +58,19 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-[#00193A] text-white flex justify-center p-4 sm:p-8 overflow-x-hidden">
-      <div className="w-full max-w-7xl space-y-6">
-        <Header />
-        <TravelForm onGenerate={generateItinerary} loading={loading} />
-        <ItineraryResults
-          itinerary={itinerary}
-          loading={loading}
-          errorMessage={errorMessage}
-        />
-      </div>
-    </main>
+    <>
+      <main className="min-h-screen bg-[#00193A] text-white flex justify-center p-4 sm:p-8 overflow-x-hidden">
+        <div className="w-full max-w-7xl space-y-6">
+          <Header />
+          <TravelForm onGenerate={generateItinerary} loading={loading} />
+          <ItineraryResults
+            itinerary={itinerary}
+            loading={loading}
+            errorMessage={errorMessage}
+          />
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

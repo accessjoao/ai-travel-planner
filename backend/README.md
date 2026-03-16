@@ -83,10 +83,6 @@ This backend is designed to deploy to cloud platforms like AWS, GCP, or Azure wi
 
 This is a portfolio project showcasing Go development and AI integration. Feel free to explore and adapt for your own projects!
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
 ---
 
 Built with 🐹 Go and powered by Claude AI
