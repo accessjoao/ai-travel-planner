@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Travel Planner Frontend
 
-## Getting Started
+A modern, responsive web application built with Next.js that helps users plan their perfect trips using AI-powered recommendations. This frontend interfaces with a Go backend to generate personalized itineraries based on user preferences.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **AI-Powered Itineraries**: Generate customized travel plans using Claude AI
+- **Interactive Travel Form**: Easy-to-use interface for specifying trip details
+- **Dynamic Itinerary Display**: Beautiful cards showing day-by-day plans
+- **Responsive Design**: Optimized for desktop and mobile devices
+- **Real-time Loading States**: Smooth user experience with loading spinners
+- **TypeScript Support**: Type-safe development with full TypeScript integration
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Backend Integration**: RESTful API with Go backend
+- **AI Integration**: Anthropic Claude API
+- **Deployment**: Vercel-ready
+
+## 📦 Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/ai-travel-planner.git
+   cd ai-travel-planner/frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
+
+3. Set up environment variables:
+   Create a `.env.local` file with:
+   ```
+   NEXT_PUBLIC_API_URL=http://localhost:8080
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 🏗️ Project Structure
+
+```
+frontend/
+├── app/                 # Next.js app directory
+│   ├── globals.css     # Global styles
+│   ├── layout.tsx      # Root layout
+│   └── page.tsx        # Home page
+├── components/         # Reusable React components
+│   ├── TravelForm.tsx  # Trip planning form
+│   ├── ItineraryResults.tsx # Results display
+│   ├── DayCard.tsx     # Individual day cards
+│   └── LoadingSpinner.tsx # Loading component
+├── types/              # TypeScript type definitions
+└── public/             # Static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Linting**: ESLint configured for code quality
+- **Type Checking**: Full TypeScript support
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🤝 Contributing
 
-## Learn More
+This is a portfolio project. Feel free to fork and modify for your own use!
 
-To learn more about Next.js, take a look at the following resources:
+## 📄 License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is open source and available under the [MIT License](LICENSE).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with ❤️ using Next.js and TypeScript

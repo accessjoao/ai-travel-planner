@@ -1,6 +1,6 @@
 export function Header() {
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 mt-20 mb-15">
       <h1 className="text-4xl font-mono font-bold">Access AI Travel Planner</h1>
 
       <p className="text-white/70 font-mono max-w-5xl">
