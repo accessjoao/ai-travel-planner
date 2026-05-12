@@ -101,5 +101,3 @@ This is a portfolio project. While it's not actively maintained for contribution
 - Portfolio: This project showcases full-stack development skills
 
 ---
-
-Built with ❤️ and AI-powered innovation
